@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, ListGroup } from 'react-bootstrap';
 import { FaGoogle, FaGithub,FaFacebook,FaTwitter,FaInstagram } from 'react-icons/fa';
 import Qzone from '../Qzone/Qzone';
+import bg from '../../../assets/bg.png'
 
 const RifgtNav = () => {
     return (
@@ -17,6 +18,9 @@ const RifgtNav = () => {
                     
                 </ListGroup>
                 <Qzone></Qzone>
+                <div>
+                    <img className='mt-4' src={bg} alt="" />
+                </div>
             </div>
         </div>
     );
