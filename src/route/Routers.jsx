@@ -17,7 +17,8 @@ const router = createBrowserRouter([
             },
             {
                 path:'/cata/:id',
-                element:<Catacory></Catacory>
+                element:<Catacory></Catacory>,
+                loader:({params})=> fetch(`http://localhost:3000/catacory/${params.id}`)
             }
         ]
     },
