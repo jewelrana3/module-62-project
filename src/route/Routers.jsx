@@ -5,18 +5,37 @@ import Catacory from '../pages/Home/Catacory/Catacory';
 
 import News from '../pages/News/News/News';
 import NewsLayout from '../layout/NewsLayout';
+import LoginLayout from '../layout/LoginLayout/LoginLayout';
+import Login from '../pages/Login/Login/Login';
+import Register from '../pages/Login/Register/Register';
+// import Register from '../pages/Login/Register/Register';
 
 const router = createBrowserRouter([
     {
         path:'/',
+        element:<LoginLayout></LoginLayout>,
+        children:[
+            {
+                path:'login',
+                element:<Login></Login>
+            },
+            {
+                path:'register',
+                element:<Register></Register>
+            }
+        ]
+    },
+    {
+        path:'cata',
         element:<Main></Main>,
         children:[
             {
                 path:'/',
-                element:<Home></Home>
+                element:<Catacory></Catacory>,
+                loader:()=> fetch('http://localhost:3000/news')
             },
             {
-                path:'/cata/:id',
+                path:':id',
                 element:<Catacory></Catacory>,
                 loader:({params})=> fetch(`http://localhost:3000/catacory/${params.id}`)
             }

@@ -7,7 +7,7 @@ const Catacory = () => {
     const catacoryNews = useLoaderData();
     return (
         <div>
-            <h3>This is catacory:{catacoryNews.length}</h3>
+           {id && <h3>This is catacory:{catacoryNews.length}</h3>}
             {
                 catacoryNews.map(news => <NewsCart
                 key={news._id}
