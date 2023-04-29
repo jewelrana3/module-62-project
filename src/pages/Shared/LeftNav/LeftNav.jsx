@@ -20,7 +20,7 @@ const LeftNav = () => {
                     catacory.map(cata=> <p
                     key={cata.id}
                     >
-                    <Link to={`/cata/${cata.id}`} className='text-decoration-none'>
+                    <Link to={`/catacory/${cata.id}`} className='text-decoration-none'>
                     {cata.name}
                     </Link>
                     </p>)
