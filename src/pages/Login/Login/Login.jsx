@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 
 const Login = () => {
 
     const {signIn} = useContext(AuthContext)
-   const  Navigate = useNavigate()
+   const  Navigate = useNavigate();
+   const location = useLocation();
+   console.log('location details',location)
+   const from = location.state?.from?.pathname || "/"
 
     const handleLogin=(event)=>{
         event.preventDefault();
@@ -23,7 +26,7 @@ const Login = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
-                 Navigate('/')
+                 Navigate(from, {replace:true})
             })
             .catch(error => {
                 console.log(error);

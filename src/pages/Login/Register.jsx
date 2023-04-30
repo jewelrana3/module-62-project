@@ -4,10 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { useState } from 'react';
 
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
+    const [accept, setAccept] = useState(false)
 
     const handleRegister = event => {
         event.preventDefault();
@@ -16,7 +18,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name , email, password)
+        console.log(name, email, password)
         createUser(email, password)
             .then(result => {
                 const createdUser = result.user;
@@ -26,11 +28,14 @@ const Register = () => {
                 console.log(error);
             })
     }
+   const handleCheck=event=>{
+    setAccept(event.target.checked)
+   }
     return (
         <Container className='w-25 mx-auto'>
             <h2>Please Register</h2>
             <Form onSubmit={handleRegister}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="D">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="text" name='name' placeholder="Enter Name" required />
                 </Form.Group>
@@ -43,15 +48,19 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                <Form.Group className="mb-3" controlId="C">
+                    <Form.Check
+                        onClick={handleCheck}
+                        type="checkbox"
+                        name='accept'
+                        label="Check me out" />
                 </Form.Group>
                 <Form.Text className="text-muted">
                     Already Account Now?
                     <Link to='/login'> Login</Link><br />
                 </Form.Text>
 
-                <Button variant="primary" type="submit">
+                <Button disabled={!accept} variant="primary" type="submit">
                     Submit
                 </Button>
 
