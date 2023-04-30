@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path:':id',
                 element:<Catacory></Catacory>,
-                loader:({params})=> fetch(`http://localhost:3000/catacory/${params.id}`)
+                loader:({params})=> fetch(`https://new-daragon-server-jewelrana3.vercel.app/catacory/${params.id}`)
             }
         ]
     },
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
          {
             path:':id',
             element:<PrivateRoute><News></News></PrivateRoute>,
-            loader:({params})=>fetch(`http://localhost:3000/news/${params.id}`)
+            loader:({params})=>fetch(`https://new-daragon-server-jewelrana3.vercel.app/news/${params.id}`)
          }
         ]
     }

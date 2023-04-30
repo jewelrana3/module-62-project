@@ -7,7 +7,7 @@ const LeftNav = () => {
     const [catacory,setCatacory] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:3000/catacory')
+        fetch('https://new-daragon-server-jewelrana3.vercel.app/catacory')
         .then(res=>res.json())
         .then(data=>setCatacory(data))
         .catch(error=>console.error(error))
