@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 
 const NavigationBer = () => {
     const { user,logOut } = useContext(AuthContext);
-
+    useTitle('Catagory')
     const handleOut=()=>{
         logOut()
         .then()

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 
 const Login = () => {
@@ -13,7 +14,7 @@ const Login = () => {
    const location = useLocation();
    console.log('location details',location)
    const from = location.state?.from?.pathname || "/"
-
+    useTitle('login')
     const handleLogin=(event)=>{
         event.preventDefault();
         const form = event.target;
